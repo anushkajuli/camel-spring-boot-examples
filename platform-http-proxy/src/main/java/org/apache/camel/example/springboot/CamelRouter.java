@@ -36,7 +36,7 @@ public class CamelRouter extends RouteBuilder {
                 .removeHeader(Exchange.HTTP_PATH)
                 .log("calling ${headers." + Exchange.HTTP_URL + "}")
                 .toD("${headers." + Exchange.HTTP_URL + "}"
-                        + "?throwExceptionOnFailure=false&bridgeEndpoint=true")
+                        + "?throwExceptionOnFailure=true&bridgeEndpoint=true")
                 .wireTap("direct:response");
 
         from("direct:request")
